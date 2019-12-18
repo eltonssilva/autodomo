@@ -1,0 +1,2 @@
+# autodomo.sh
+Sistema AutoDomo
