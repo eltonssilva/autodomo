@@ -24,7 +24,7 @@ else
     if [ -e /sys/class/net/eth0 ]
     then
         MAC=$(cat /sys/class/net/eth0/address)
-    elif
+    elif [ -e /sys/class/net/wlan0 ]
     then
         MAC=$(cat /sys/class/net/wlan0/address)
     else
