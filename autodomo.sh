@@ -4,6 +4,7 @@ printf "Digite a Senha do Repositorio: "
 
 read -s senha  # O -s é para não mostra a senha
 
+echo "Instalando o Docker"
 curl -sSL https://get.docker.com | sh
 
 
@@ -32,15 +33,21 @@ else
     ./install.sh
     /etc/init.d/logmein-hamachi start
     hamachi login
+    echo "Logando Hamachi Pause por 10 segundos"
+    sleep 10
     hamachi attach eltonss.eng@gmail.com
+    echo "Anexando conta do Hamachi Pause por 3 segundos"
+    sleep 10
     hamachi set-nick $MAC
+    echo "Set Nickname $MAC Hamachi Pause por 10 segundos"
+    sleep 10
     cd ..
 fi
 
 
 
 
-
+echo "Baixando os Containes"
 if [ ! -d "autodomodocker/mqtt" ]
 then
 git clone https://autodomum:$senha@bitbucket.org/autodomum_05/autodomodocker.git
