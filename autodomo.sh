@@ -35,16 +35,18 @@ else
     tar -zxvf logmein-hamachi-2.1.0.203-armhf.tgz
     cd logmein-hamachi-2.1.0.203-armhf
     ./install.sh
+    wait $!
     /etc/init.d/logmein-hamachi start
+    wait $!
     sudo hamachi login
-    echo "Logando Hamachi Pause por 25 segundos"
-    sleep 25
+    wait $!
+    echo "Logando Hamachi"
     sudo hamachi attach eltonss.eng@gmail.com
-    echo "Anexando conta do Hamachi Pause por 10 segundos"
-    sleep 10
+    wait $!
+    echo "Anexando conta do Hamachi"
     sudo hamachi set-nick $MAC
-    echo "Set Nickname $MAC Hamachi Pause por 15 segundos"
-    sleep 15
+    wait $!
+    echo "Set Nickname $MAC Hamachi"
     cd ..
 fi
 
