@@ -21,10 +21,14 @@ then
     echo "$SERVICE is running, PID is $P"
 else
     echo "$SERVICE is not running"
-    if [ -e /sys/class/net/eth0 ]; then
+    if [ -e /sys/class/net/eth0 ]
+    then
         MAC=$(cat /sys/class/net/eth0/address)
-    else
+    elif
+    then
         MAC=$(cat /sys/class/net/wlan0/address)
+    else
+        MAC=$$
     fi
 
     wget https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-armhf.tgz
