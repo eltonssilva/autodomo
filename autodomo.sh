@@ -14,21 +14,30 @@ sudo systemctl enable docker
 
 apt-get install -y docker-compose
 
-if [ -e /sys/class/net/eth0 ]; then
-      MAC=$(cat /sys/class/net/eth0/address)
+SERVICE=hamachi
+if P=$(pgrep $SERVICE)
+then
+    echo "$SERVICE is running, PID is $P"
 else
-      MAC=$(cat /sys/class/net/wlan0/address)
+    echo "$SERVICE is not running"
+    if [ -e /sys/class/net/eth0 ]; then
+        MAC=$(cat /sys/class/net/eth0/address)
+    else
+        MAC=$(cat /sys/class/net/wlan0/address)
+    fi
+
+    wget https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-armhf.tgz
+    tar -zxvf logmein-hamachi-2.1.0.203-armhf.tgz
+    cd logmein-hamachi-2.1.0.203-armhf
+    ./install.sh
+    /etc/init.d/logmein-hamachi start
+    hamachi login
+    hamachi attach eltonss.eng@gmail.com
+    hamachi set-nick $MAC
+    cd ..
 fi
 
-wget https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-armhf.tgz
-tar -zxvf logmein-hamachi-2.1.0.203-armhf.tgz
-cd logmein-hamachi-2.1.0.203-armhf
-./install.sh
-/etc/init.d/logmein-hamachi start
-hamachi login
-hamachi attach eltonss.eng@gmail.com
-hamachi set-nick $MAC
-cd ..
+
 
 
 
