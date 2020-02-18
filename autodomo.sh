@@ -33,13 +33,13 @@ else
     ./install.sh
     /etc/init.d/logmein-hamachi start
     hamachi login
-    echo "Logando Hamachi Pause por 10 segundos"
+    echo "Logando Hamachi Pause por 20 segundos"
     sleep 10
     hamachi attach eltonss.eng@gmail.com
-    echo "Anexando conta do Hamachi Pause por 3 segundos"
+    echo "Anexando conta do Hamachi Pause por 10 segundos"
     sleep 10
     hamachi set-nick $MAC
-    echo "Set Nickname $MAC Hamachi Pause por 10 segundos"
+    echo "Set Nickname $MAC Hamachi Pause por 15 segundos"
     sleep 10
     cd ..
 fi
