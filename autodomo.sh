@@ -32,15 +32,15 @@ else
     cd logmein-hamachi-2.1.0.203-armhf
     ./install.sh
     /etc/init.d/logmein-hamachi start
-    hamachi login
-    echo "Logando Hamachi Pause por 20 segundos"
-    sleep 10
-    hamachi attach eltonss.eng@gmail.com
+    sudo hamachi login
+    echo "Logando Hamachi Pause por 25 segundos"
+    sleep 25
+    sudo hamachi attach eltonss.eng@gmail.com
     echo "Anexando conta do Hamachi Pause por 10 segundos"
     sleep 10
-    hamachi set-nick $MAC
+    sudo hamachi set-nick $MAC
     echo "Set Nickname $MAC Hamachi Pause por 15 segundos"
-    sleep 10
+    sleep 15
     cd ..
 fi
 
