@@ -10,7 +10,6 @@ curl -sSL https://get.docker.com | sh
 
 sudo usermod -aG docker pi
 
-
 sudo systemctl enable docker
 
 apt-get install -y docker-compose
