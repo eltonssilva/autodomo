@@ -18,7 +18,29 @@ apt-get install -y docker-compose
 SERVICE=hamachi
 if P=$(pgrep $SERVICE)
 then
+    if [ -e /sys/class/net/eth0 ]
+    then
+        MAC=$(cat /sys/class/net/eth0/address)
+    elif [ -e /sys/class/net/wlan0 ]
+    then
+        MAC=$(cat /sys/class/net/wlan0/address)
+    else
+        MAC=$$
+    fi
+
     echo "$SERVICE is running, PID is $P"
+    sudo systemctl stop logmein-hamachi
+    wait $!
+    cd /var/lib/logmein-hamachi
+    sudo rm *
+    sudo systemctl start logmein-hamachi
+    wait $!
+    sudo hamachi login
+    wait $!
+    sudo hamachi attach eltonss.eng@gmail.com
+    wait $!
+    sudo hamachi set-nick $MAC
+    wait $!
 else
     echo "$SERVICE is not running"
     if [ -e /sys/class/net/eth0 ]
