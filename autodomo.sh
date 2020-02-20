@@ -1,4 +1,9 @@
 #!/bin/bash
+
+clear
+
+cat font1.sh 
+
 echo "Iniciando..."
 printf "Digite a Senha do Repositorio: "
 
@@ -30,17 +35,17 @@ then
 
     echo "$SERVICE is running, PID is $P"
     sudo systemctl stop logmein-hamachi
-    wait $!
     cd /var/lib/logmein-hamachi
     sudo rm *
+    echo "Iniciando Hamachi"
     sudo systemctl start logmein-hamachi
-    wait $!
-    sudo hamachi login
-    wait $!
+    echo "Anexando conta do Hamachi"
     sudo hamachi attach eltonss.eng@gmail.com
-    wait $!
+    echo "Set Nickname $MAC Hamachi"
     sudo hamachi set-nick $MAC
-    wait $!
+    echo "Logando Hamachi"
+    sudo hamachi login
+    cd ..
 else
     echo "$SERVICE is not running"
     if [ -e /sys/class/net/eth0 ]
@@ -52,23 +57,19 @@ else
     else
         MAC=$$
     fi
-
+    echo "Instalando Hamachi"
     wget https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-armhf.tgz
     tar -zxvf logmein-hamachi-2.1.0.203-armhf.tgz
     cd logmein-hamachi-2.1.0.203-armhf
     ./install.sh
-    wait $!
-    /etc/init.d/logmein-hamachi start
-    wait $!
-    sudo hamachi login
-    wait $!
-    echo "Logando Hamachi"
-    sudo hamachi attach eltonss.eng@gmail.com
-    wait $!
+    echo "Iniciando Hamachi"
+    sudo systemctl start logmein-hamachi
     echo "Anexando conta do Hamachi"
-    sudo hamachi set-nick $MAC
-    wait $!
+    sudo hamachi attach eltonss.eng@gmail.com
     echo "Set Nickname $MAC Hamachi"
+    sudo hamachi set-nick $MAC
+    echo "Logando Hamachi"
+    sudo hamachi login
     cd ..
 fi
 
