@@ -20,6 +20,12 @@ sudo systemctl enable docker
 
 apt-get install -y docker-compose
 
+clear
+
+cat font1.sh 
+
+echo "Instalando Hamachi"
+
 SERVICE=hamachi
 if P=$(pgrep $SERVICE)
 then
@@ -62,6 +68,8 @@ else
     tar -zxvf logmein-hamachi-2.1.0.203-armhf.tgz
     cd logmein-hamachi-2.1.0.203-armhf
     ./install.sh
+    echo "Esperando 20 Segundos"
+    sleep 20
     echo "Iniciando Hamachi"
     sudo systemctl start logmein-hamachi
     echo "Anexando conta do Hamachi"
