@@ -5,9 +5,9 @@ clear
 cat font1.sh 
 
 echo "Iniciando..."
-printf "Digite a Senha do Repositorio: "
+#printf "Digite a Senha do Repositorio: "
 
-read -s senha  # O -s é para não mostra a senha
+#read -s senha  # O -s é para não mostra a senha
 
 echo "Instalando o Docker"
 curl -sSL https://get.docker.com | sh
@@ -79,12 +79,12 @@ fi
 echo "Baixando os Containes"
 if [ ! -d "autodomodocker/mqtt" ]
 then
-git clone https://autodomum:$senha@bitbucket.org/autodomum_05/autodomodocker.git
-chmod -R 777 autodomodocker/mqtt
-cd autodomodocker/mqtt
+git clone https://github.com/eltonssilva/Lais.git
+chmod -R 777 Lais/mqtt
+cd Lais/mqtt
 else
-chmod -R 777 autodomodocker/mqtt
-cd autodomodocker/mqtt
+chmod -R 777 Lais/mqtt
+cd Lais/mqtt
 git pull
 fi
 
