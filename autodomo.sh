@@ -77,7 +77,7 @@ fi
 
 
 echo "Baixando os Containes"
-if [ ! -d "autodomodocker/mqtt" ]
+if [ ! -d "Lais/mqtt" ]
 then
 git clone https://github.com/eltonssilva/Lais.git
 chmod -R 777 Lais/mqtt
