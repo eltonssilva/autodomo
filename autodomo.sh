@@ -20,6 +20,14 @@ sudo systemctl enable docker
 
 apt-get install -y docker-compose
 
+apt-get install -y nodejs
+
+apt-get install -y npm
+
+npm install -g pm2
+
+pm2 startup
+
 clear
 
 cat font1.sh 
@@ -83,7 +91,6 @@ fi
 
 
 
-
 echo "Baixando os Containes"
 if [ ! -d "Lais/mqtt" ]
 then
@@ -96,6 +103,7 @@ cd Lais/mqtt
 git pull
 fi
 
+pm2 start kdb/devautodomo/kdb.js --exp-backoff-restart-delay=20
 
 if [ -e "/dev/ttyACM0" ]
 then
