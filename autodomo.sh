@@ -103,6 +103,8 @@ cd Lais/mqtt
 git pull
 fi
 
+
+npm install ./kdb/devautodomo
 pm2 start kdb/devautodomo/kdb.js --exp-backoff-restart-delay=20
 
 if [ -e "/dev/ttyACM0" ]
