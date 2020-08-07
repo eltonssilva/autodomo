@@ -26,8 +26,6 @@ apt-get install -y npm
 
 npm install -g pm2
 
-pm2 startup
-
 clear
 
 cat font1.sh 
@@ -105,7 +103,10 @@ fi
 
 
 npm install ./kdb/devautodomo
-pm2 start kdb/devautodomo/kdb.js --exp-backoff-restart-delay=20
+
+sudo pm2 start /home/autodomo/Lais/mqtt/kdb/devautodomo/kdb.js --exp-backoff-restart-delay=20
+sudo pm2 save
+sudo pm2 startup
 
 if [ -e "/dev/ttyACM0" ]
 then
