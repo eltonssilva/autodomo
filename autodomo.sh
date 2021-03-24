@@ -10,7 +10,9 @@ echo "Iniciando..."
 #read -s senha  # O -s é para não mostra a senha
 
 echo "Instalando o Docker"
-curl -sSL https://get.docker.com | sh
+sudo curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
 
 
 sudo usermod -aG docker pi
